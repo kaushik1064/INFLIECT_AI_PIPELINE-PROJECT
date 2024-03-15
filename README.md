@@ -14,11 +14,11 @@ conda activate venv/
 
 - Clone the repository.
 ```
-git clone https://github.com/noorkhokhar99/yolov5-flask-object-detection.git
+git clone https://github.com/kaushik1064/INFLIECT_AI_PIPELINE-PROJECT.git
 ```
 - Goto the cloned folder.
 ```
-cd yolov5-flask-object-detection
+cd INFLIECT_AI_PIPELINE-PROJECT
 
 ```
 - Upgrade pip with mentioned command below.
