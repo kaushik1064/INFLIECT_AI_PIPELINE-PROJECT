@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Pipeline Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            color: #28a745;
+        }
+
+        pre {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button.download-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+
+        button.download-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to AI Pipeline Application</h1>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" multiple>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if download_links %}
+        <h2>Results Obtained!</h2>
+        {% for i in range(download_links | length) %}
+            {% set link = download_links[i] %}
+            <h3>Result for Image {{ i + 1 }}:</h3>
+            <a href="{{ link }}" download="result_image{{ i + 1 }}.jpg">
+                <button class="download-btn">Download Image {{ i + 1 }}</button>
+            </a>
+            <pre>{{ results[i] | tojson | safe }}</pre>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
